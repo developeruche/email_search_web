@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<br />
+
+{% block title%} App {% endblock %}
+<br />
+
+{% block content %}
+<br />
+<h1>Send a string containing emails from which you want to scrap from</h1>
+<form action="{% url 'submit_string' %}" method="POST">
+  {% csrf_token %}
+  <textarea name="data" id="email_raw" cols="30" rows="10"></textarea>
+  <input type="submit" value="Submit" />
+</form>
+<h1>OR</h1>
+<br />
+<h2>
+  Send An image that would be processed, figure out the emails in there and
+  print them out
+</h2>
+<br />
+<form action="{% url 'submit_image' %}" method="POST">
+  {% csrf_token %}
+
+  <input type="file" name="data" />
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}
